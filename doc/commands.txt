@@ -1,25 +1,28 @@
-X IrSender.sendRC5(0x1E, 0x0, <numberOfRepeats>);
-Y IrSender.sendRC5(0x1E, 0x1, <numberOfRepeats>);
-Z IrSender.sendRC5(0x1E, 0x2, <numberOfRepeats>);
 
-S IrSender.sendRC5(0x1E, 0x3, <numberOfRepeats>);
-- IrSender.sendRC5(0x1E, 0x4, <numberOfRepeats>);
-+ IrSender.sendRC5(0x1E, 0x5, <numberOfRepeats>);
+Id Value Instruction
 
-M IrSender.sendRC5(0x1E, 0x6, <numberOfRepeats>);
-ON IrSender.sendRC5(0x1E, 0x7, <numberOfRepeats>);
-OFF IrSender.sendRC5(0x1E, 0x8, <numberOfRepeats>);
+0 X IrSender.sendRC5(0x1E, 0x0, <numberOfRepeats>);
+1 Y IrSender.sendRC5(0x1E, 0x1, <numberOfRepeats>);
+2 Z IrSender.sendRC5(0x1E, 0x2, <numberOfRepeats>);
 
-P IrSender.sendRC5(0x1E, 0x12, <numberOfRepeats>);
-enter IrSender.sendRC5(0x1E, 0x14, <numberOfRepeats>);
+3 S IrSender.sendRC5(0x1E, 0x3, <numberOfRepeats>);
+4 - IrSender.sendRC5(0x1E, 0x4, <numberOfRepeats>);
+5 + IrSender.sendRC5(0x1E, 0x5, <numberOfRepeats>);
 
-1 IrSender.sendRC5(0x1E, 0x9, <numberOfRepeats>);
-2 IrSender.sendRC5(0x1E, 0xA, <numberOfRepeats>);
-3 IrSender.sendRC5(0x1E, 0xB, <numberOfRepeats>);
-4 IrSender.sendRC5(0x1E, 0xC, <numberOfRepeats>);
-5 IrSender.sendRC5(0x1E, 0xD, <numberOfRepeats>);
-6 IrSender.sendRC5(0x1E, 0xE, <numberOfRepeats>);
-7 IrSender.sendRC5(0x1E, 0xF, <numberOfRepeats>);
-8 IrSender.sendRC5(0x1E, 0x10, <numberOfRepeats>);
-9 IrSender.sendRC5(0x1E, 0x11, <numberOfRepeats>);
-0 IrSender.sendRC5(0x1E, 0x13, <numberOfRepeats>);
+6 M IrSender.sendRC5(0x1E, 0x6, <numberOfRepeats>);
+7 ON IrSender.sendRC5(0x1E, 0x7, <numberOfRepeats>);
+8 OFF IrSender.sendRC5(0x1E, 0x8, <numberOfRepeats>);
+
+9 P IrSender.sendRC5(0x1E, 0x12, <numberOfRepeats>);
+10 enter IrSender.sendRC5(0x1E, 0x14, <numberOfRepeats>);
+
+11 1 IrSender.sendRC5(0x1E, 0x9, <numberOfRepeats>);
+12 2 IrSender.sendRC5(0x1E, 0xA, <numberOfRepeats>);
+13 3 IrSender.sendRC5(0x1E, 0xB, <numberOfRepeats>);
+14 4 IrSender.sendRC5(0x1E, 0xC, <numberOfRepeats>);
+15 5 IrSender.sendRC5(0x1E, 0xD, <numberOfRepeats>);
+16 6 IrSender.sendRC5(0x1E, 0xE, <numberOfRepeats>);
+17 7 IrSender.sendRC5(0x1E, 0xF, <numberOfRepeats>);
+18 8 IrSender.sendRC5(0x1E, 0x10, <numberOfRepeats>);
+19 9 IrSender.sendRC5(0x1E, 0x11, <numberOfRepeats>);
+20 0 IrSender.sendRC5(0x1E, 0x13, <numberOfRepeats>);
