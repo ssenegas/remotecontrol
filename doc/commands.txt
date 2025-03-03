@@ -1,98 +1,25 @@
-X
-Y
-Z
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0x0 Raw-Data=0x1780 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x0, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x1 Toggle=1 Raw-Data=0x1F81 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x1, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x2 Raw-Data=0x1782 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x2, <numberOfRepeats>);
+X IrSender.sendRC5(0x1E, 0x0, <numberOfRepeats>);
+Y IrSender.sendRC5(0x1E, 0x1, <numberOfRepeats>);
+Z IrSender.sendRC5(0x1E, 0x2, <numberOfRepeats>);
 
-S
--
-+
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0x3 Toggle=1 Raw-Data=0x1F83 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x3, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x4 Raw-Data=0x1784 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x4, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x5 Toggle=1 Raw-Data=0x1F85 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x5, <numberOfRepeats>);
+S IrSender.sendRC5(0x1E, 0x3, <numberOfRepeats>);
+- IrSender.sendRC5(0x1E, 0x4, <numberOfRepeats>);
++ IrSender.sendRC5(0x1E, 0x5, <numberOfRepeats>);
 
-M
-ON
-OFF
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0x6 Raw-Data=0x1786 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x6, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x7 Toggle=1 Raw-Data=0x1F87 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x7, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x8 Raw-Data=0x1788 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x8, <numberOfRepeats>);
+M IrSender.sendRC5(0x1E, 0x6, <numberOfRepeats>);
+ON IrSender.sendRC5(0x1E, 0x7, <numberOfRepeats>);
+OFF IrSender.sendRC5(0x1E, 0x8, <numberOfRepeats>);
 
-P
-enter
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0x12 Raw-Data=0x1792 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x12, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x14 Toggle=1 Raw-Data=0x1F94 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x14, <numberOfRepeats>);
+P IrSender.sendRC5(0x1E, 0x12, <numberOfRepeats>);
+enter IrSender.sendRC5(0x1E, 0x14, <numberOfRepeats>);
 
-1
-2
-3
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0x9 Raw-Data=0x1789 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x9, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0xA Toggle=1 Raw-Data=0x1F8A 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xA, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0xB Raw-Data=0x178B 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xB, <numberOfRepeats>);
-
-4
-5
-6
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0xC Toggle=1 Raw-Data=0x1F8C 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xC, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0xD Raw-Data=0x178D 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xD, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0xE Toggle=1 Raw-Data=0x1F8E 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xE, <numberOfRepeats>);
-
-7
-8
-9
-0
-**************
-Decode:
-Protocol=RC5 Address=0x1E Command=0xF Raw-Data=0x178F 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0xF, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x10 Toggle=1 Raw-Data=0x1F90 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x10, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x11 Raw-Data=0x1791 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x11, <numberOfRepeats>);
-Decode:
-Protocol=RC5 Address=0x1E Command=0x13 Toggle=1 Raw-Data=0x1F93 13 bits MSB first
-Send with: IrSender.sendRC5(0x1E, 0x13, <numberOfRepeats>);
-
+1 IrSender.sendRC5(0x1E, 0x9, <numberOfRepeats>);
+2 IrSender.sendRC5(0x1E, 0xA, <numberOfRepeats>);
+3 IrSender.sendRC5(0x1E, 0xB, <numberOfRepeats>);
+4 IrSender.sendRC5(0x1E, 0xC, <numberOfRepeats>);
+5 IrSender.sendRC5(0x1E, 0xD, <numberOfRepeats>);
+6 IrSender.sendRC5(0x1E, 0xE, <numberOfRepeats>);
+7 IrSender.sendRC5(0x1E, 0xF, <numberOfRepeats>);
+8 IrSender.sendRC5(0x1E, 0x10, <numberOfRepeats>);
+9 IrSender.sendRC5(0x1E, 0x11, <numberOfRepeats>);
+0 IrSender.sendRC5(0x1E, 0x13, <numberOfRepeats>);
