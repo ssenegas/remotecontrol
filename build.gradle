@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'org.senegas.remotecontrol.RemoteControlApp'
+}
+
+group = 'org.senegas'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.formdev/flatlaf
+    implementation group: 'com.formdev', name: 'flatlaf', version: '3.5.2'
+
+    // https://mvnrepository.com/artifact/com.miglayout/miglayout-swing
+    implementation group: 'com.miglayout', name: 'miglayout-swing', version: '11.1'
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
