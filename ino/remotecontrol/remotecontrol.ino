@@ -2,7 +2,6 @@
 /* https://github.com/Arduino-IRremote/Arduino-IRremote
  * Version 4.4.1
  */
-
 #include <IRremote.h>
 
 /* https://llschall.github.io/ardwloop
@@ -26,11 +25,15 @@ void setup() {
 void loop() {
   ardw_loop();
 
-  // Retreive the value sent by the Java program
-  int cmd = ardw_r()->a.v;
-  if (cmd != 1) process(cmd);
+  int flag = ardw_r()->a.v;
+  if (flag == 0) {
+    delay(99);
+    return;
+  }
 
-  delay(999);
+  // Retrieve the value sent by the Java program
+  int cmd = ardw_r()->a.w;
+  process(cmd);
 }
 
 // Sends the signal matching the command via the infra red led

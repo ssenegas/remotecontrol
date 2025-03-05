@@ -44,7 +44,10 @@ public class ArdwProgram implements IArdwProgram {
         }
 
         // wrap the code in the message that will be sent to the Arduino board
-        return new SerialData(code);
+        return new SerialData(
+                1, // ardw_r()->a.v
+                code // ardw_r()->a.w
+        );
     }
 
     int mapCode(RemoteButton button) {
