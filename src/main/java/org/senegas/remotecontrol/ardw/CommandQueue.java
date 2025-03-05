@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CommandQueue {
 
-    private static CommandQueue INSTANCE = new CommandQueue();
+    private static final CommandQueue INSTANCE = new CommandQueue();
 
     public static CommandQueue get() {
         return INSTANCE;
@@ -16,7 +16,11 @@ public class CommandQueue {
         // hide constructor
     }
 
-    private ConcurrentLinkedQueue<RemoteButton> commands = new ConcurrentLinkedQueue<>();
+    /* This is the queue between the actions collected by the GUI and the Ardwloop backend
+     * # Each time the User presses a button, this queue is fed with one entry
+     * # The queue is polled by the Ardwloop program, which does process the button commands it fins inside
+     */
+    private final ConcurrentLinkedQueue<RemoteButton> commands = new ConcurrentLinkedQueue<>();
 
     public void addCommand(RemoteButton button) {
         commands.add(button);
