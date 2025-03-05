@@ -26,6 +26,10 @@ public class RemoteControlView extends JFrame {
 
         for (RemoteButton button : RemoteButton.values()) {
             JButton btn = new JButton(button.getDisplayName());
+            btn.putClientProperty("JButton.buttonType", "roundRect");
+            btn.setBackground(button.getBackgroundColor());
+            btn.setForeground(button.getTextColor());
+
             btn.addActionListener(new ButtonListener(button));
             add(btn);
         }

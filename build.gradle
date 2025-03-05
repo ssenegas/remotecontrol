@@ -22,7 +22,9 @@ java {
 
 dependencies {
     // https://mvnrepository.com/artifact/com.formdev/flatlaf
-    implementation group: 'com.formdev', name: 'flatlaf', version: '3.5.2'
+    implementation group: 'com.formdev', name: 'flatlaf', version: '3.5.4'
+
+    implementation 'com.formdev:flatlaf-intellij-themes:3.5.4'
 
     // https://mvnrepository.com/artifact/com.miglayout/miglayout-swing
     implementation group: 'com.miglayout', name: 'miglayout-swing', version: '11.1'

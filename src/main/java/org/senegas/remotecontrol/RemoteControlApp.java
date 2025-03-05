@@ -3,7 +3,7 @@
  */
 package org.senegas.remotecontrol;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
 
 import org.senegas.remotecontrol.view.RemoteController;
 import org.senegas.remotecontrol.view.RemoteControlView;
@@ -66,7 +66,7 @@ public class RemoteControlApp {
     }
 
     private void create() {
-        FlatIntelliJLaf.setup();
+        FlatDarkLaf.setup();
 
         final RemoteController controller = new RemoteController();
 
