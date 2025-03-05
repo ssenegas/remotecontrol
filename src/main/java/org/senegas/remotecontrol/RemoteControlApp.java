@@ -5,6 +5,9 @@ package org.senegas.remotecontrol;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import org.llschall.ardwloop.ArdwloopStarter;
+import org.llschall.ardwloop.IArdwConfig;
+import org.senegas.remotecontrol.ardw.ArdwProgram;
 import org.senegas.remotecontrol.view.RemoteController;
 import org.senegas.remotecontrol.view.RemoteControlView;
 
@@ -61,6 +64,7 @@ public class RemoteControlApp {
 
         EventQueue.invokeLater(
                 () -> {
+                    ArdwloopStarter.get().start(new ArdwProgram(), IArdwConfig.BAUD_9600);
                     new RemoteControlApp().create();
                 });
     }
