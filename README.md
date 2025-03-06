@@ -8,4 +8,4 @@ This application is designed to control a infra red light mounted on an Arduino 
 
 ## Related Projects
 
-to be define.
+[Arduino IRremote](https://github.com/Arduino-IRremote/Arduino-IRremote) A library enabling the sending & receiving of infra-red signals.
