@@ -1,4 +1,6 @@
 
+#include <Arduino.h>
+
 /* https://github.com/Arduino-IRremote/Arduino-IRremote
  * Version 4.4.1
  */
