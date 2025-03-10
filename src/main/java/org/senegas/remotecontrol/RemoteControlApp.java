@@ -8,7 +8,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import org.llschall.ardwloop.ArdwloopStarter;
 import org.llschall.ardwloop.IArdwConfig;
 import org.senegas.remotecontrol.ardw.ArdwProgram;
-import org.senegas.remotecontrol.view.RemoteController;
+import org.senegas.remotecontrol.view.RemoteControlController;
 import org.senegas.remotecontrol.view.RemoteControlView;
 
 import java.awt.*;
@@ -72,7 +72,7 @@ public class RemoteControlApp {
     private void create() {
         FlatDarkLaf.setup();
 
-        final RemoteController controller = new RemoteController();
+        final RemoteControlController controller = new RemoteControlController();
 
         final String title = MessageFormat.format("{0} v{1}", TITLE, VERSION);
         final JFrame f = new RemoteControlView(controller);

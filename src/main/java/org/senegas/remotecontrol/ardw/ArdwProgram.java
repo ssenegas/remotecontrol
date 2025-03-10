@@ -3,7 +3,8 @@ package org.senegas.remotecontrol.ardw;
 import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.StructureTimer;
 import org.llschall.ardwloop.value.SerialData;
-import org.senegas.remotecontrol.model.RemoteButton;
+import org.senegas.remotecontrol.model.Command;
+import org.senegas.remotecontrol.model.RemoteControlButton;
 
 public class ArdwProgram implements IArdwProgram {
 
@@ -22,24 +23,26 @@ public class ArdwProgram implements IArdwProgram {
      */
     @Override
     public SerialData ardwLoop(SerialData serialData) {
+        CommandQueue queue = CommandQueue.INSTANCE;
 
         // if there is no command, to be process, wait a little and return
-        if (CommandQueue.get().isEmpty()) {
+        if (queue.isEmpty()) {
             StructureTimer.get().delayMs(99);
             return new SerialData();
         }
 
         // if there is one or more command, only process the first one,
         // and leave any other commands in the queue for the next calls
-        RemoteButton button = CommandQueue.get().retrieveCommand();
+        Command command = queue.retrieveCommand();
+        System.out.println("Retrieved command for button: " + command.getButton().getDisplayName());
 
         // find the code associated to the button, according to the mapping
         // that the logic in the Arduino will watch as well
-        int code = mapCode(button);
+        int code = mapCode(command.getButton());
 
         if (code==-1) {
             // ignore for now
-            System.err.println("Unsupported button: "+button);
+            System.err.println("Unsupported button: "+command.getButton().getDisplayName());
             return new SerialData();
         }
 
@@ -50,7 +53,7 @@ public class ArdwProgram implements IArdwProgram {
         );
     }
 
-    int mapCode(RemoteButton button) {
+    int mapCode(RemoteControlButton button) {
         switch (button) {
             case ON -> {
                 return 7 ;}

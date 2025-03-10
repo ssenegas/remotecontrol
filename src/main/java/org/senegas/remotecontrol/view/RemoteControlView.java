@@ -1,7 +1,7 @@
 package org.senegas.remotecontrol.view;
 
 import org.senegas.remotecontrol.RemoteControlApp;
-import org.senegas.remotecontrol.model.RemoteButton;
+import org.senegas.remotecontrol.model.RemoteControlButton;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,16 +15,16 @@ import java.awt.event.ActionListener;
 
 public class RemoteControlView extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(RemoteControlView.class.getName());
-    private RemoteController controller;
+    private RemoteControlController controller;
 
-    public RemoteControlView(RemoteController controller) {
+    public RemoteControlView(RemoteControlController controller) {
         this.controller = controller;
         setTitle("Remote Control");
         setIconImage(createImage("/images/remote-control_icon256.png", "icon"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(7, 3));
 
-        for (RemoteButton button : RemoteButton.values()) {
+        for (RemoteControlButton button : RemoteControlButton.values()) {
             JButton btn = new JButton(button.getDisplayName());
             btn.putClientProperty("JButton.buttonType", "roundRect");
             btn.setBackground(button.getBackgroundColor());
@@ -49,9 +49,9 @@ public class RemoteControlView extends JFrame {
     }
 
     private class ButtonListener implements ActionListener {
-        private RemoteButton button;
+        private RemoteControlButton button;
 
-        public ButtonListener(RemoteButton button) {
+        public ButtonListener(RemoteControlButton button) {
             this.button = button;
         }
 
