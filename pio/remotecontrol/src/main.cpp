@@ -44,9 +44,11 @@ void process(int cmd) {
   int repeats = 1;
 
   if (cmd == 7) {
+    // 7 ON IrSender.sendRC5(0x1E, 0x7, <numberOfRepeats>);
     IrSender.sendRC5(0x1E, 0x7, repeats);
   }
   if (cmd == 8) {
+    //8 OFF IrSender.sendRC5(0x1E, 0x8, <numberOfRepeats>);
     IrSender.sendRC5(0x1E, 0x8, repeats);
   }
 }

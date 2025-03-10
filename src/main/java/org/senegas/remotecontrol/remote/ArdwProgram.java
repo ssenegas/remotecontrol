@@ -25,7 +25,7 @@ public class ArdwProgram implements IArdwProgram {
     public SerialData ardwLoop(SerialData serialData) {
         CommandQueue queue = CommandQueue.INSTANCE;
 
-        // if there is no command, to be process, wait a little and return
+        // if there is no command to be process, wait a little and return
         if (queue.isEmpty()) {
             StructureTimer.get().delayMs(99);
             return new SerialData();
@@ -40,9 +40,9 @@ public class ArdwProgram implements IArdwProgram {
         // that the logic in the Arduino will watch as well
         int code = mapCode(command.getButton());
 
-        if (code==-1) {
+        if (code == -1) {
             // ignore for now
-            System.err.println("Unsupported button: "+command.getButton().getDisplayName());
+            System.err.println("Unsupported button: " + command.getButton().getDisplayName());
             return new SerialData();
         }
 
@@ -53,11 +53,15 @@ public class ArdwProgram implements IArdwProgram {
         );
     }
 
+    // the mapping must match the process() method in the Arduino code
     int mapCode(RemoteControlButton button) {
         switch (button) {
             case ON -> {
-                return 7 ;}
-            case OFF -> {return 8;}
+                return 7;
+            }
+            case OFF -> {
+                return 8;
+            }
         }
         return -1;
     }
