@@ -1,4 +1,4 @@
-package org.senegas.remotecontrol.ardw;
+package org.senegas.remotecontrol.remote;
 
 import org.senegas.remotecontrol.model.Command;
 

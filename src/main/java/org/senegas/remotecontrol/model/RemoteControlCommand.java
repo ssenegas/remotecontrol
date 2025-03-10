@@ -1,6 +1,6 @@
 package org.senegas.remotecontrol.model;
 
-import org.senegas.remotecontrol.ardw.CommandQueue;
+import org.senegas.remotecontrol.remote.CommandQueue;
 
 public class RemoteControlCommand implements Command {
     private final RemoteControlButton button;

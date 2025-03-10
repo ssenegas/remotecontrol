@@ -7,7 +7,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 
 import org.llschall.ardwloop.ArdwloopStarter;
 import org.llschall.ardwloop.IArdwConfig;
-import org.senegas.remotecontrol.ardw.ArdwProgram;
+import org.senegas.remotecontrol.remote.ArdwProgram;
 import org.senegas.remotecontrol.view.RemoteControlController;
 import org.senegas.remotecontrol.view.RemoteControlView;
 
