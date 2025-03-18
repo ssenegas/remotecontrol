@@ -34,13 +34,13 @@ public enum RemoteControlButton {
     private final String displayName;
     private final Color textColor;
     private final Color backgroundColor;
-    private final RemoteControlCommand command;
+    private final RemoteControlButtonCommand command;
 
     RemoteControlButton(String displayName, Color textColor, Color backgroundColor) {
         this.displayName = displayName;
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
-        this.command = new RemoteControlCommand(this); // Each button has its own command
+        this.command = new RemoteControlButtonCommand(this); // Each button has its own command
     }
 
     public String getDisplayName() {
@@ -55,7 +55,7 @@ public enum RemoteControlButton {
         return backgroundColor;
     }
 
-    public RemoteControlCommand getCommand() {
+    public RemoteControlButtonCommand getCommand() {
         return command;
     }
 }

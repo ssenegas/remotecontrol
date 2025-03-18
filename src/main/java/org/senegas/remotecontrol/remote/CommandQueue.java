@@ -1,26 +1,26 @@
 package org.senegas.remotecontrol.remote;
 
-import org.senegas.remotecontrol.model.Command;
+import org.senegas.remotecontrol.model.RemoteControlCommand;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public enum CommandQueue {
     INSTANCE;
 
-    private final ConcurrentLinkedQueue<Command> commands = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<RemoteControlCommand> remoteControlCommands = new ConcurrentLinkedQueue<>();
 
-    public void addCommand(Command command) {
-        if (command != null) {
-            commands.add(command);
+    public void addCommand(RemoteControlCommand remoteControlCommand) {
+        if (remoteControlCommand != null) {
+            remoteControlCommands.add(remoteControlCommand);
         }
     }
 
     public boolean isEmpty() {
-        return commands.isEmpty();
+        return remoteControlCommands.isEmpty();
     }
 
-    public Command retrieveCommand() {
-        return commands.poll();
+    public RemoteControlCommand retrieveCommand() {
+        return remoteControlCommands.poll();
     }
 }
 

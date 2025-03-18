@@ -3,7 +3,7 @@ package org.senegas.remotecontrol.remote;
 import org.llschall.ardwloop.IArdwProgram;
 import org.llschall.ardwloop.structure.StructureTimer;
 import org.llschall.ardwloop.value.SerialData;
-import org.senegas.remotecontrol.model.Command;
+import org.senegas.remotecontrol.model.RemoteControlCommand;
 import org.senegas.remotecontrol.model.RemoteControlButton;
 
 public class ArdwProgram implements IArdwProgram {
@@ -33,16 +33,16 @@ public class ArdwProgram implements IArdwProgram {
 
         // if there is one or more command, only process the first one,
         // and leave any other commands in the queue for the next calls
-        Command command = queue.retrieveCommand();
-        System.out.println("Retrieved command for button: " + command.getButton().getDisplayName());
+        RemoteControlCommand remoteControlCommand = queue.retrieveCommand();
+        System.out.println("Retrieved command for button: " + remoteControlCommand.getButton().getDisplayName());
 
         // find the code associated to the button, according to the mapping
         // that the logic in the Arduino will watch as well
-        int code = mapCode(command.getButton());
+        int code = mapCode(remoteControlCommand.getButton());
 
         if (code == -1) {
             // ignore for now
-            System.err.println("Unsupported button: " + command.getButton().getDisplayName());
+            System.err.println("Unsupported button: " + remoteControlCommand.getButton().getDisplayName());
             return new SerialData();
         }
 
