@@ -1,10 +1,28 @@
 package org.senegas.remotecontrol.model;
 
+import org.yaml.snakeyaml.Yaml;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MacroRemoteControlCommand implements RemoteControlCommand {
-    private final List<RemoteControlCommand> commands = new ArrayList<>();
+    private List<RemoteControlCommand> commands = new ArrayList<>();
+
+    public MacroRemoteControlCommand() {
+    }
+
+    public MacroRemoteControlCommand(List<RemoteControlCommand> commands) {
+        this.commands = commands;
+    }
 
     public void addCommand(RemoteControlCommand command) {
         commands.add(command);
@@ -24,5 +42,16 @@ public class MacroRemoteControlCommand implements RemoteControlCommand {
     @Override
     public RemoteControlButton getButton() {
         return null;
+    }
+
+    public static MacroRemoteControlCommand loadMacro(InputStream input) {
+        Yaml yaml = new Yaml();
+        Map<String, Object> yamlData = yaml.load(input);
+        List<String> buttonNames = (List<String>) yamlData.get("macro");
+        List<RemoteControlCommand> commands = buttonNames.stream()
+                .map(RemoteControlButton::valueOf)
+                .map(RemoteControlButtonCommand::new)
+                .collect(Collectors.toList());
+        return new MacroRemoteControlCommand(commands);
     }
 }
