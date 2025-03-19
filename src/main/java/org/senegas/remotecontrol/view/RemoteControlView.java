@@ -57,7 +57,7 @@ public class RemoteControlView extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.buttonPressed(button);
+            controller.buttonPressed(this.button);
         }
     }
 }
