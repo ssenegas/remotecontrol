@@ -54,7 +54,7 @@ public class MacroRemoteControlCommand implements RemoteControlCommand {
         List<String> buttonNames = (List<String>) yamlData.get("macro");
         List<RemoteControlCommand> commands = buttonNames.stream()
                 .map(RemoteControlButton::valueOf)
-                .map(RemoteControlButtonCommand::new)
+                .map(RemoteControlButton::getCommand)
                 .collect(Collectors.toList());
         return new MacroRemoteControlCommand(commands);
     }
