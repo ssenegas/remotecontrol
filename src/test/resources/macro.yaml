@@ -1,7 +1,9 @@
 macro:
-  - X
-  - Y
-  - Z
-  - ZERO
-  - ZERO
-  - SEVEN
+  - "X"
+  - "Y"
+  - "Z"
+  - "ZERO"
+  - "ZERO"
+  - "SEVEN"
+  - "ON"
+  - "OFF"

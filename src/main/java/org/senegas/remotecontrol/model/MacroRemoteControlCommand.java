@@ -1,6 +1,8 @@
 package org.senegas.remotecontrol.model;
 
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,7 +47,9 @@ public class MacroRemoteControlCommand implements RemoteControlCommand {
     }
 
     public static MacroRemoteControlCommand loadMacro(InputStream input) {
-        Yaml yaml = new Yaml();
+        LoaderOptions options = new LoaderOptions();
+        options.setAllowDuplicateKeys(false);
+        Yaml yaml = new Yaml(new Constructor(Map.class, options));
         Map<String, Object> yamlData = yaml.load(input);
         List<String> buttonNames = (List<String>) yamlData.get("macro");
         List<RemoteControlCommand> commands = buttonNames.stream()

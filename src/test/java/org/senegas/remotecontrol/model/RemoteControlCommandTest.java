@@ -59,7 +59,7 @@ public class RemoteControlCommandTest {
 
             // Verify the macro contains the expected commands
             List<RemoteControlCommand> commands = macroCommand.getCommands();
-            assertEquals(6, commands.size(), "Macro should contain 6 commands");
+            assertEquals(8, commands.size(), "Macro should contain 6 commands");
 
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(0));
             assertEquals(RemoteControlButton.X, ((RemoteControlButtonCommand) commands.get(0)).getButton());
@@ -79,13 +79,19 @@ public class RemoteControlCommandTest {
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(5));
             assertEquals(RemoteControlButton.SEVEN, ((RemoteControlButtonCommand) commands.get(5)).getButton());
 
+            assertInstanceOf(RemoteControlButtonCommand.class, commands.get(6));
+            assertEquals(RemoteControlButton.ON, ((RemoteControlButtonCommand) commands.get(6)).getButton());
+
+            assertInstanceOf(RemoteControlButtonCommand.class, commands.get(7));
+            assertEquals(RemoteControlButton.OFF, ((RemoteControlButtonCommand) commands.get(7)).getButton());
+
             assertDoesNotThrow(() -> macroCommand.execute());
         }
     }
 
     @Test
     void testLoadMacroFromString() {
-        String yamlContent = "macro:\n- X\n- Y\n- Z\n- ZERO\n- ZERO\n- SEVEN\n";
+        String yamlContent = "macro:\n  - \"X\"\n  - \"Y\"\n  - \"Z\"\n  - \"ZERO\"\n  - \"ZERO\"\n  - \"SEVEN\"\n  - \"ON\"\n  - \"OFF\"\n";
         InputStream input = new ByteArrayInputStream(yamlContent.getBytes(StandardCharsets.UTF_8));
 
         MacroRemoteControlCommand macroCommand = MacroRemoteControlCommand.loadMacro(input);
