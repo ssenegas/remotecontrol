@@ -12,7 +12,6 @@ public:
 
     void handleCommand(int command) {
         if (command < 0 || command >= NUM_BUTTONS) {
-            Serial.println("Invalid command received");
             return;
         }
 
@@ -26,11 +25,6 @@ private:
     uint8_t _deviceAddress;
 
     void sendIRSignal(uint8_t rc5Command) {
-        Serial.print("Sending RC5 signal - Address: ");
-        Serial.print(_deviceAddress);
-        Serial.print(", Command: ");
-        Serial.println(rc5Command);
-
         IrSender.sendRC5(_deviceAddress, rc5Command, false);
     }
 
