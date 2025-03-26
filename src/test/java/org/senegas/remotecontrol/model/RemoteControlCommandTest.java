@@ -1,8 +1,7 @@
 package org.senegas.remotecontrol.model;
 
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -10,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 public class RemoteControlCommandTest {
     private RemoteControlButtonCommand buttonCommandX;
@@ -19,7 +17,6 @@ public class RemoteControlCommandTest {
 
     @BeforeEach
     void setUp() {
-        // Use enum values directly
         buttonCommandX = (RemoteControlButtonCommand) RemoteControlButton.X.getCommand();
         buttonCommandY = (RemoteControlButtonCommand) RemoteControlButton.Y.getCommand();
 
@@ -28,7 +25,6 @@ public class RemoteControlCommandTest {
 
     @Test
     void testButtonCommandExecution() {
-        // Capture output for assertion (use a logging or capture mechanism in real cases)
         assertDoesNotThrow(() -> buttonCommandX.execute());
         assertDoesNotThrow(() -> buttonCommandY.execute());
     }
@@ -40,15 +36,30 @@ public class RemoteControlCommandTest {
     }
 
     @Test
+    void testDelayCommand() {
+        RemoteControlDelayCommand remoteControlDelayCommand = new RemoteControlDelayCommand(2000);
+        assertDoesNotThrow(() -> remoteControlDelayCommand.execute());
+    }
+
+    @Test
+    void testMacroCommandExecutionWithDelay() {
+        macroCommand.addCommand(RemoteControlButton.ZERO.getCommand());
+        macroCommand.addCommand(new RemoteControlDelayCommand(2000));
+        macroCommand.addCommand(RemoteControlButton.ONE.getCommand());
+
+        assertEquals(3, macroCommand.getCommands().size());
+
+        assertDoesNotThrow(() -> macroCommand.execute());
+    }
+
+    @Test
     void testMacroCommandExecution() {
-        // Add button commands to macro
         macroCommand.addCommand(RemoteControlButton.ZERO.getCommand());
         macroCommand.addCommand(RemoteControlButton.ZERO.getCommand());
         macroCommand.addCommand(RemoteControlButton.SEVEN.getCommand());
 
         assertEquals(3, macroCommand.getCommands().size());
 
-        // Execute the macro (should execute all added commands)
         assertDoesNotThrow(() -> macroCommand.execute());
     }
 
@@ -57,9 +68,8 @@ public class RemoteControlCommandTest {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("macro.yaml")) {
             MacroRemoteControlCommand macroCommand = MacroRemoteControlCommand.loadMacro(input);
 
-            // Verify the macro contains the expected commands
             List<RemoteControlCommand> commands = macroCommand.getCommands();
-            assertEquals(8, commands.size(), "Macro should contain 6 commands");
+            assertEquals(7, commands.size(), "Macro should contain 6 commands");
 
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(0));
             assertEquals(RemoteControlButton.X, ((RemoteControlButtonCommand) commands.get(0)).getButton());
@@ -67,23 +77,20 @@ public class RemoteControlCommandTest {
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(1));
             assertEquals(RemoteControlButton.Y, ((RemoteControlButtonCommand) commands.get(1)).getButton());
 
-            assertInstanceOf(RemoteControlButtonCommand.class, commands.get(2));
-            assertEquals(RemoteControlButton.Z, ((RemoteControlButtonCommand) commands.get(2)).getButton());
+            assertInstanceOf(RemoteControlDelayCommand.class, commands.get(2));
+            assertEquals(null, ((RemoteControlDelayCommand) commands.get(2)).getButton());
 
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(3));
-            assertEquals(RemoteControlButton.ZERO, ((RemoteControlButtonCommand) commands.get(3)).getButton());
+            assertEquals(RemoteControlButton.Z, ((RemoteControlButtonCommand) commands.get(3)).getButton());
 
-            assertInstanceOf(RemoteControlButtonCommand.class, commands.get(4));
-            assertEquals(RemoteControlButton.ZERO, ((RemoteControlButtonCommand) commands.get(4)).getButton());
+            assertInstanceOf(RemoteControlDelayCommand.class, commands.get(4));
+            assertEquals(null, ((RemoteControlDelayCommand) commands.get(4)).getButton());
 
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(5));
-            assertEquals(RemoteControlButton.SEVEN, ((RemoteControlButtonCommand) commands.get(5)).getButton());
+            assertEquals(RemoteControlButton.ON, ((RemoteControlButtonCommand) commands.get(5)).getButton());
 
             assertInstanceOf(RemoteControlButtonCommand.class, commands.get(6));
-            assertEquals(RemoteControlButton.ON, ((RemoteControlButtonCommand) commands.get(6)).getButton());
-
-            assertInstanceOf(RemoteControlButtonCommand.class, commands.get(7));
-            assertEquals(RemoteControlButton.OFF, ((RemoteControlButtonCommand) commands.get(7)).getButton());
+            assertEquals(RemoteControlButton.OFF, ((RemoteControlButtonCommand) commands.get(6)).getButton());
 
             assertDoesNotThrow(() -> macroCommand.execute());
         }
@@ -91,7 +98,16 @@ public class RemoteControlCommandTest {
 
     @Test
     void testLoadMacroFromString() {
-        String yamlContent = "macro:\n  - \"X\"\n  - \"Y\"\n  - \"Z\"\n  - \"ZERO\"\n  - \"ZERO\"\n  - \"SEVEN\"\n  - \"ON\"\n  - \"OFF\"\n";
+        String yamlContent = """
+    macro:
+      - { type: "button", value: "X" }
+      - { type: "button", value: "Y" }
+      - { type: "delay", value: 2000 }
+      - { type: "button", value: "Z" }
+      - { type: "delay", value: 1000 }
+      - { type: "button", value: "ON" }
+      - { type: "button", value: "OFF" }
+    """;
         InputStream input = new ByteArrayInputStream(yamlContent.getBytes(StandardCharsets.UTF_8));
 
         MacroRemoteControlCommand macroCommand = MacroRemoteControlCommand.loadMacro(input);
